@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Loan } from './types';
 import { getContainer } from './container';
-import { Loans } from './loans';
+import LoanCard from './loanCard';
 
 function App() {
   const [error, setError] = useState('');
@@ -19,9 +19,12 @@ function App() {
       container.core.getAccounts(function (response) {
         if (response.success) {
           const loanData = response.data.loanAccountDetails.loanMessage.loanList.loan.map((loan) => ({
+            accountId: loan.accountId,
             description: loan.description,
             productName: loan.accountNickName || "No Nickname",
-            interestRate: loan.meta.loanMeta.interestRate,
+            interestRate: loan.meta.loanMeta?.interestRate,
+            minimumPayment: loan.meta.loanMeta?.minimumPayment?.value || 0,
+            paymentDueDate: loan.meta.loanMeta?.currentDueDate || "",
             actualBalance: { value: loan.actualBalance.value, currencyCode: loan.actualBalance.currencyCode },
             originalBalance: { value: loan.meta.loanMeta.originalBalance.value, currencyCode: "USD" },
             currentPayoffBalance: { value: loan.meta.loanMeta.currentPayoffBalance.value, currencyCode: "USD" },
@@ -39,11 +42,15 @@ function App() {
   }, []);
 
   return (
-    <div style={{ width: '1000px', border: '5px solid red' }}>
+    <div>
       {error ? (
         <p style={{ color: 'red' }}>{error}</p>
       ) : (
-        <Loans loans={loans} />
+        loans.map((loan, index) => (
+          <div key={index}>
+            <LoanCard loan={loan} />
+          </div>
+        ))
       )}
     </div>
   );
