@@ -1,4 +1,4 @@
-# CDP Example React Tile
+# CDP React Tile Example
 
 ## Installation and Running Locally
 Using the command `npm i && npm run dev` will run the tile locally.
@@ -17,7 +17,7 @@ There is a `tile.local.css` located in the public directory for local styling. U
 > In your development portal, enter the context of your test credit union, go to "Configure Container" and click on "UI Configuration". Near the bottom of the page you'll find all of the variables that are injected into the tile. 
 
 ## Deployment
-Running `npm run build` will populate the `dist` directory with all needed files. After the build runs, upload all files, except for `tile.local.css`, into the CDP project portal. 
+Running `npm run build` will populate the `dist` directory with all needed files. After the build runs, upload all files into the CDP project portal. 
 
 > [!TIP]
 > In this particular example, the mocked calls all require authentication, so ensure you add it to the authenticated group of your credit union

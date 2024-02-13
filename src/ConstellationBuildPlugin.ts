@@ -42,6 +42,11 @@ export default function ConstellationBuildPlugin(): Plugin {
       if (fs.existsSync(source)) {
         fs.renameSync(source, destination);
       }
+
+      const cssSource = path.resolve(options.dir || "dist", "tile.local.css");
+      if (fs.existsSync(cssSource)) {
+        fs.unlinkSync(cssSource);
+      }
     },
     transformIndexHtml(html) {
       const finalHtml = html
