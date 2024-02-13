@@ -141,7 +141,9 @@ export default function LoanCard(props: LoanCardProps) {
             fontWeight: 500,
             textTransform: "none",
             "&:hover": {
-              filter: "brightness(90%)",
+              filter: "brightness(80%)",
+              text: "var(--white)",
+              backgroundColor: "var(--primary-theme-color)",
             },
           }}
         >
