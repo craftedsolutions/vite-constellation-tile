@@ -131,7 +131,7 @@ export default function LoanCard(props: LoanCardProps) {
           sx={{
             alignSelf: "stretch",
             height: 48,
-            backgroundColor: "var(--secondary-theme-color)",
+            backgroundColor: "var(--primary-theme-color)",
             borderRadius: 1,
             display: "flex",
             justifyContent: "center",
